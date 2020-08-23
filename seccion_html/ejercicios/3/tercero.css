@@ -1,0 +1,28 @@
+body{
+	background-color: #D3D3D3;
+	font-family: 'Aldrich', sans-serif;
+}
+
+#title{
+	border: black 1px solid;
+	text-align: center;
+}
+
+.colors {
+	color: purple;
+}
+
+a{
+	color: red;
+}
+
+input{
+	border: darkblue 5px solid;
+}
+
+#comments{
+	border: grey 5px solid;
+	height: 400px;
+	width: 800px;
+
+}
