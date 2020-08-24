@@ -9,6 +9,21 @@
 	<p>{{ letters }}</p>
 	<p>{{ pup_dictionary['pup_name'] }}</p>
 	<h2>Here is a pic of a puppy!</h2>
+	<br>
+	
 	<img src="../static/puppy_pic.jpg" alt="puppy pic">
+
+	<p>List of puppies names:</p>
+	<ul>
+		{% for puppy in puppies_names %}
+		<li>{{ puppy }}</li>
+		{% endfor %}
+	</ul>
+
+	{% if 'Rufus' in puppies_names %}
+		<p>Found you Rufus!</p>
+	{% else %}
+		<p>Hmm.. Rufus is not here!</p>
+	{% endif %}
 </body>
 </html>
