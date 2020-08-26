@@ -1,5 +1,5 @@
 from flask import (Flask, render_template, session, redirect,
-	url_for)
+	url_for, flash)
 from flask_wtf import FlaskForm
 from wtforms import (StringField, BooleanField, DateTimeField,
 	RadioField, SelectField, TextField, TextAreaField, SubmitField)
@@ -36,6 +36,7 @@ def index():
 		session['mood'] = form.mood.data
 		session['food'] = form.food_choice.data
 		session['feedback'] = form.feedback.data
+		flash('You just cliked the button!')
 		# Redirect hacia el template thankyou
 		return redirect(url_for('thankyou'))
 	return render_template('index.html', form=form)
