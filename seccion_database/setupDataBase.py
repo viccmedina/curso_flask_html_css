@@ -3,8 +3,8 @@ from basic import db, Puppy
 # Crea todas las tablas
 db.create_all()
 
-sam = Puppy('Sammy', 3)
-frank = Puppy('Frankie', 4)
+sam = Puppy('Sammy', 3, 'Lab')
+frank = Puppy('Frankie', 4, 'Shepard')
 
 # Podemos agregarlo a la db con una sola línea
 # Para ello, le pasamos por parámetro una lista.
