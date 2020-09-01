@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login iport LoginManager
+from flask_login import LoginManager
 
 login_manager = LoginManager()
 
@@ -12,7 +12,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'mysecretkey'
 
 db = SQLAlchemy(app)
-Migrate(app)
+Migrate(app,db)
 
 login_manager.init_app(app)
 login_manager.login_view = 'login'
