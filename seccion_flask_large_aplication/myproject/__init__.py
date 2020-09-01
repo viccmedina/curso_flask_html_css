@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/vmedina/UNLu/curso_flask_html_css/seccion_flask_large_aplication/myproject/data.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/victoria/desarrollo/flask/seccion_flask_large_aplication/myproject/data.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'mysecretkey'
 
