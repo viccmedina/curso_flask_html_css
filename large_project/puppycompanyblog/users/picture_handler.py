@@ -4,6 +4,10 @@ from flask import url_for, current_app
 
 
 def add_profile_pic(pic_upload, username):
+	"""
+	Nos permite administrar las fotos de perfiles
+	de cada usuario.
+	"""
 	filename = pic_upload.filename
 	ext_type = filename.spli('.')[-1]
 	storegae_filename = str(username) + '.' + ext_type
