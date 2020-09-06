@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'mysecret'
 
 # Data Base
 app.config['SQALCHEMY_DATABASE_URI'] = 'sqlite:////home/victoria/desarrollo/flask/large_project/puppycompanyblog/data.sqlite'
