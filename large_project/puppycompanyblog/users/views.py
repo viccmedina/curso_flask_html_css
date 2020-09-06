@@ -43,11 +43,11 @@ def account():
 		if form.picture.data:
 			username = current_user.username
 			pic = add_profile_pic(form.picture.data, username)
-			current_user.profiel_image = pic
+			current_user.profile_image = pic
 
 		current_user.username = form.username.data
-		current_user.email = form.mail.data
-		db.sssion.commit()
+		current_user.email = form.email.data
+		db.session.commit()
 		flash('User Account Update!')
 		return redirect(url_for('users.account'))
 	elif request.method == 'GET':
@@ -56,7 +56,7 @@ def account():
 
 	profile_image = url_for('static', filename='profile_pics/' + 
 										current_user.profile_image)
-	return render_template('account.hmtl', profile_image=profile_image,
+	return render_template('account.html', profile_image=profile_image,
 							form=form)
 
 @users.route('/<username>')
@@ -64,7 +64,7 @@ def user_post(username):
 	# Para traernos solamente una cantidad de posts y no todos
 	page = request.args.get('page', 1, type=int)
 	# Traemos informacion del usuario o delvemos un error 404
-	user = User.query.flter_by(username=username).first_or_404()
+	user = User.query.filter_by(username=username).first_or_404()
 	# Recuperamos los posts realizado por el usuario,
 	# como referimos en el modelo usuario que es autor
 	# podemos llamarlo de esa manera
@@ -75,4 +75,4 @@ def user_post(username):
 @users.route('/logout')
 def logout():
 	logout_user()
-	return redirect(url_for('core.inde'))
+	return redirect(url_for('core.index'))
