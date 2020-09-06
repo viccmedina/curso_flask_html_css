@@ -69,7 +69,7 @@ def user_post(username):
 	# como referimos en el modelo usuario que es autor
 	# podemos llamarlo de esa manera
 	blog_posts = BlogPost.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
-	return render_template('user_blog.posts.html', blog_posts=blog_posts, user=user)
+	return render_template('user_blog_posts.html', blog_posts=blog_posts, user=user)
 
 
 @users.route('/logout')
