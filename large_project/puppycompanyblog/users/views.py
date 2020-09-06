@@ -36,6 +36,41 @@ def login():
 		return redirect(next)
 return render_template('login.html', form=form)
 
+@users.route('/account', method=['GET', 'POST'])
+def account():
+	form = UpdateUserForm()
+	if form.validate_on_submit():
+		if form.picture.data:
+			username = current_user.username
+			pic = add_profile_pic(form.picture.data, username)
+			current_user.profiel_image = pic
+
+		current_user.username = form.username.data
+		current_user.email = form.mail.data
+		db.sssion.commit()
+		flash('User Account Update!')
+		return redirect(url_for('users.account'))
+	elif request.method == 'GET':
+		form.username.data = current_user.username
+		form.email.data = current_user.email
+
+	profiel_image = url_for('static'. filename='profile_pics/' + 
+										current_user.profile_image)
+	retunr render_template('account.hmtl', profile_image=profile_image. 
+							form=form)
+
+@users.route('/<username>')
+def user_post(username):
+	# Para traernos solamente una cantidad de posts y no todos
+	page = request.args.get('page', 1, type=int)
+	# Traemos informacion del usuario o delvemos un error 404
+	user = User.query.flter_by(username=username).first_or_404()
+	# Recuperamos los posts realizado por el usuario,
+	# como referimos en el modelo usuario que es autor
+	# podemos llamarlo de esa manera
+	blog_posts = BlogPost.query.filter_by(author=user).order_by(BlogPost.date.desc()).paginate(page=page, per_page=5)
+	return render_template('user_blog.posts.html', blog_posts=blog_posts, user=user)
+
 
 @users.route('/logout')
 def logout():
