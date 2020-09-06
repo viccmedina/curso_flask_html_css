@@ -8,7 +8,7 @@ from puppycompanyblog.users.picture_handler import add_profile_pic
 users = Blueprint('users', __name__)
 
 
-@ysers.route('/register', methods=['GET', 'POST'])
+@users.route('/register', methods=['GET', 'POST'])
 def register():
 	form = RegistrationForm()
 	if form.validate_on_submit():
@@ -21,7 +21,7 @@ def register():
 		return redirect(url_for('users.login'))
 	return render_template('register.html', form=form)
 
-@users.route('/login', methos=['GET','POST'])
+@users.route('/login', methods=['GET','POST'])
 def login():
 	form = LoginForm()
 	if form.validate_on_submit():
@@ -34,9 +34,9 @@ def login():
 			next = url_for('core.index')
 
 		return redirect(next)
-return render_template('login.html', form=form)
+	return render_template('login.html', form=form)
 
-@users.route('/account', method=['GET', 'POST'])
+@users.route('/account', methods=['GET', 'POST'])
 def account():
 	form = UpdateUserForm()
 	if form.validate_on_submit():
@@ -54,9 +54,9 @@ def account():
 		form.username.data = current_user.username
 		form.email.data = current_user.email
 
-	profiel_image = url_for('static'. filename='profile_pics/' + 
+	profile_image = url_for('static', filename='profile_pics/' + 
 										current_user.profile_image)
-	retunr render_template('account.hmtl', profile_image=profile_image. 
+	return render_template('account.hmtl', profile_image=profile_image,
 							form=form)
 
 @users.route('/<username>')

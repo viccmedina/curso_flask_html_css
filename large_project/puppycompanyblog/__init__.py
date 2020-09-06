@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_alchemy import SQALchemy
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
@@ -7,8 +7,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
 
 # Data Base
-app.config['SQALCHEMY_DATABASE_URI'] = 'sqlite:////home/victoria/desarrollo/flask/large_project/puppycompanyblog/data.sqlite'
-app.config = ['SQALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/victoria/desarrollo/flask/large_project/puppycompanyblog/data.sqlite'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 Migrate(app, db)
 
 # Login Config
