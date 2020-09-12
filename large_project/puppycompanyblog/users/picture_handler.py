@@ -10,11 +10,9 @@ def add_profile_pic(pic_upload,username):
     # Grab extension type .jpg or .png
     ext_type = filename.split('.')[-1]
     storage_filename = str(username) + '.' +ext_type
-    print(storage_filename)
     
     filepath = os.path.join(current_app.root_path, 'static/profile_pics', storage_filename)
-    print('#'*60)
-    print(filepath)
+
     # Play Around with this size.
     output_size = (200, 200)
 

@@ -32,7 +32,7 @@ def create_post():
 												post=blog_post)
 
 # Update
-@blog_post.route('/<int:blog_post_id/id>', methods=['GET', 'POST'])
+@blog_posts.route('/<int:blog_post_id>/id', methods=['GET', 'POST'])
 @login_required
 def update(blog_post_id):
 	blog_post = BlogPost.query.get_or_404(blog_post_id)
@@ -55,7 +55,8 @@ def update(blog_post_id):
 	return render_template('create_post.html', title='updating', form=form)
 
 # Delete
-@blog_post.route('/<int:blog_post_id>/detele', methods=['GET', 'POST'])
+@blog_posts.route('/<int:blog_post_id>/detele', methods=['GET', 'POST'])
+@login_required
 def delete_post(blog_post_id):
 	blog_post = BlogPost.query.get_or_404(blog_post_id)
 	if blog_post.author != current_user:

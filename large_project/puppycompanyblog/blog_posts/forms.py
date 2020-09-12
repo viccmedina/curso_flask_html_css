@@ -1,8 +1,8 @@
-from flask_wtf impor FormFlask
+from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired
 
-class BlogPostForm(FormFlask):
+class BlogPostForm(FlaskForm):
 	title = StringField('Title', validators=[DataRequired()])
-	text = StringField('Text', validators=[DataRequired()])
+	text = TextAreaField('Text', validators=[DataRequired()])
 	submit = SubmitField('Post')
